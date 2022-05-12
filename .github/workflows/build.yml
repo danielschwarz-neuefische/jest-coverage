@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: |
+          npm install
+          CI=true npm test -- --coverage --testResultsProcessor=jest-sonar-reporter
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
